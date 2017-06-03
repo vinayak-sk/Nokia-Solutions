@@ -1,4 +1,4 @@
-import com.company.SortUniqueWords;
+import com.example.SortUniqueWords;
 import org.junit.Test;
 
 import java.util.List;

@@ -36,6 +36,7 @@ public class SortUniqueWords {
 
         //Put unique words in a map maintaining the count of occurrences
         for (String line : Files.readAllLines(Paths.get(path))) {
+            //Lower case all words and remove all non-alphabet characters except space. Use "[^a-zA-Z0-9 ]+" to keep numbers as well.
             for (String s : line.toLowerCase().replaceAll("[^a-zA-Z ]+", "").split(" ")) {
                 if (occurrences.containsKey(s)) {
                     occurrences.put(s, occurrences.get(s) + 1);
@@ -48,7 +49,7 @@ public class SortUniqueWords {
         //Put all the entries in a list to sort
         List<Map.Entry<String, Integer>> sortedOccurrences = new LinkedList<>(occurrences.entrySet());
 
-        //Custom comparator to sort the list first by number of occurrences and then by value.
+        //Custom comparator to sort the list first by number of occurrences and then by value. Complexity: O(nlogn)
         Collections.sort(sortedOccurrences, new Comparator<Map.Entry<String, Integer>>() {
 
             @Override
