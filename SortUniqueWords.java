@@ -38,10 +38,12 @@ public class SortUniqueWords {
         for (String line : Files.readAllLines(Paths.get(path))) {
             //Lower case all words and remove all non-alphabet characters except space. Use "[^a-zA-Z0-9 ]+" to keep numbers as well.
             for (String s : line.toLowerCase().replaceAll("[^a-zA-Z ]+", "").split(" ")) {
-                if (occurrences.containsKey(s)) {
-                    occurrences.put(s, occurrences.get(s) + 1);
-                } else {
-                    occurrences.put(s, 1);
+                if(!s.equals("")){
+                    if (occurrences.containsKey(s)) {
+                        occurrences.put(s, occurrences.get(s) + 1);
+                    } else {
+                        occurrences.put(s, 1);
+                    }
                 }
             }
         }
